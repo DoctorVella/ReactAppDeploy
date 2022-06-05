@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const Slice = ({css, text}) => {
+const Slice = ({css, text, description}) => {
   const [open,setOpen] = useState(false)
 
   const changeOpenState = () => {
@@ -10,7 +10,8 @@ const Slice = ({css, text}) => {
   return <div className={'Slice ' + css + (open ? '' : ' BackgroundBlur')} 
             onMouseEnter={changeOpenState}
             onMouseOut={changeOpenState}>
-    {text}
+    {text}<br/>
+    <span className='Description'>{description}</span>
   </div>
 };
 

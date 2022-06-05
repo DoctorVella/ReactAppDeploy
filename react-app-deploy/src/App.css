@@ -25,21 +25,26 @@
   font-weight: bold;
 }
 
+.Description{
+  font-size: 30px;
+  font-weight: normal;
+}
+
 .BackgroundBlur{
   filter: blur(8px);
 }
 
 .BackgroundImage1{
-  background-image: url("logo.svg");
-  box-shadow: inset 0 0 0 1000px rgba(129, 245, 255, 0.434);
+  background-image: url("img1.jpg");
+  box-shadow: inset 0 0 0 1000px rgba(129, 245, 255, 0.334);
 }
 
 .BackgroundImage2{
-  background-image: url("logo.svg");
+  background-image: url("img2.jpg");
   box-shadow: inset 0 0 0 1000px rgba(255, 213, 229, 0.434);
 }
 
 .BackgroundImage3{
-  background-image: url("logo.svg");
-  box-shadow: inset 0 0 0 1000px rgba(255, 255, 221, 0.434);
+  background-image: url("img3.jpg");
+  box-shadow: inset 0 0 0 1000px rgba(255, 255, 221, 0.334);
 }
