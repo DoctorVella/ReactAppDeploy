@@ -1,38 +1,45 @@
 .App {
   text-align: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Header{
+  padding: 20px;
+  text-align: center;
+  background: #A0FFE6;
+  font-size: 40px;
+  font-style: italic;
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Slice{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  padding-top: 320px;
+  font-size: 40px;
+  font-style: italic;
+  font-weight: bold;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.BackgroundBlur{
+  filter: blur(8px);
 }
 
-.App-link {
-  color: #61dafb;
+.BackgroundImage1{
+  background-image: url("logo.svg");
+  box-shadow: inset 0 0 0 1000px rgba(129, 245, 255, 0.434);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.BackgroundImage2{
+  background-image: url("logo.svg");
+  box-shadow: inset 0 0 0 1000px rgba(255, 213, 229, 0.434);
+}
+
+.BackgroundImage3{
+  background-image: url("logo.svg");
+  box-shadow: inset 0 0 0 1000px rgba(255, 255, 221, 0.434);
 }

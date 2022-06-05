@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import Slice from './components/Slice/Slice';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="Header">
+        Header
       </header>
+      <div className="container-fluid">
+        <div className="row vh-100">
+          <div className="col-md-4 p-0">
+            <Slice css="BackgroundImage1" text="Primo slice"/>
+          </div>
+          <div className="col-md-4 p-0">
+            <Slice css="BackgroundImage2" text="Secondo slice"/>
+          </div>
+          <div className="col-md-4 p-0">
+            <Slice css="BackgroundImage3" text="Terzo slice"/>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
