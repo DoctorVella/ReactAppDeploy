@@ -10,3 +10,4 @@ How to deploy a react app on github:
 5) Aggiungere agli scripts in package.json i due seguenti campi:
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+6) Lancia npm run deploy per buildare e deployare su github pages al link specificato nel campo homepage di package.json (controllare se serve aggiungere uno slash finale per non avere 404)
