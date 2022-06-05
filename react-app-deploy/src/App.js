@@ -15,7 +15,7 @@ function App() {
           </div>
           <div className="col-md-4 p-0">
             <Slice css="BackgroundImage2" text="Federica Bufalina"
-                  description="In realtà supporta e sopporta un bimbo con un serio problema di autismo"/>
+                  description="In realtà supporta e sopporta un bambino autistico"/>
           </div>
           <div className="col-md-4 p-0">
             <Slice css="BackgroundImage3" text="Federica Maestrina"
