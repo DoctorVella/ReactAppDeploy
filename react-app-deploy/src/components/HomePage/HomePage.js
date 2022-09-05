@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const HomePage = () => (
   <div>
-    HomePage Component <Link to="Fede">TEST</Link>
+    HomePage Component
   </div>
 );
 

@@ -11,3 +11,5 @@ How to deploy a react app on github:
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
 6) Lancia npm run deploy per buildare e deployare su github pages al link specificato nel campo homepage di package.json (controllare se serve aggiungere uno slash finale per non avere 404)
+
+N.B. Per rendere compatibile il deploy su Github Pages con il redirect mediante barra url del browser utilizzando il BrowserRouter di react-router-dom è necessario seguire la seguente guida: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L21-L42
