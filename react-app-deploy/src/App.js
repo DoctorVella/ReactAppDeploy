@@ -8,9 +8,9 @@ import HomePage from './components/HomePage/HomePage';
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename="ReactAppDeploy">
         <Routes>
-          <Route path="ReactAppDeploy">
+          <Route>
             <Route index element={<HomePage/>}/>
             <Route path="home" element={<HomePage/>}/>
             <Route path="Fede" element={<FedePage/>}/>
