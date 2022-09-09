@@ -1,6 +1,7 @@
 import React, { useContext,useEffect,useState } from 'react';
 import { AppContext } from '../../contexts/AppContext';
-
+import Card from '../Card/Card';
+import './HomePage.css';
 
 const HomePage = () => {
   const {axiosInstance} = useContext(AppContext);
@@ -51,9 +52,41 @@ const HomePage = () => {
     postRecord();
   },[])
 
-  return <div>
-    GET result: {JSON.stringify(getResponse)}<br/>
-    POST result: {JSON.stringify(postResponse)}
+  return <div className='container-fluid'>
+    <div className='HomePage'>
+      <h1 className='h1'>
+        <span>This is a </span> 
+        <span className='mongodbColor'>M.</span>
+        <span className='expressColor'>E.</span>
+        <span className='reactColor'>R.</span>
+        <span className='nodeColor'>N.</span>
+        <span> proof of concept</span>
+      </h1>
+      <div className='row'>
+        <div className='col-md-6'>
+          <Card title="CREATE">
+            {JSON.stringify(postResponse)}
+          </Card>
+        </div>
+        <div className='col-md-6'>
+          <Card title="READ">
+            <div>{JSON.stringify(getResponse)}</div>
+          </Card>
+        </div>
+      </div>
+      <div className='row'>
+        <div className='col-md-6'>
+          <Card title="UPDATE">
+            <div>CONTENT</div>
+          </Card>
+        </div>
+        <div className='col-md-6'>
+          <Card title="DELETE">
+            <div>CONTENT</div>
+          </Card>
+        </div>
+      </div>
+    </div>
   </div>
 };
 
