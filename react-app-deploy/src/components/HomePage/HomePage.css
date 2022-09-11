@@ -1,6 +1,18 @@
 .HomePage{
-    margin: 5% 10% 5% 10%;
     text-align: center;
+    background-color: #E1FFEE;
+}
+
+.h1{
+    padding-top: 50px;
+}
+
+.Button{
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px 10px 5px 10px;
+    color: white;
+    border: none;
 }
 
 .mongodbColor{

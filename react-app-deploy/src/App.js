@@ -5,12 +5,14 @@ import {
 import FedePage from './components/FedePage/FedePage';
 import HomePage from './components/HomePage/HomePage';
 import { AppContextProvider } from './contexts/AppContext';
+import CustomLoader from './components/CustomLoader/CustomLoader';
 
 function App() {
   return (
     <div className="App">
       <AppContextProvider>
         <BrowserRouter basename="ReactAppDeploy">
+          <CustomLoader/>
           <Routes>
             <Route>
               <Route index element={<HomePage />} />

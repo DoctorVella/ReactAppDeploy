@@ -1,9 +1,9 @@
-import React, { Children } from 'react';
+import React from 'react';
 import './Card.css';
 
-const Card = ({title,children}) => {
+const Card = ({title,titleCss,children}) => {
     return <div className='Card'>
-        <div className='CardTitle'>{title}</div>
+        <div className={'CardTitle' + (titleCss ? (" " + titleCss) : "")}>{title}</div>
         <div>{children}</div>
     </div>
 }
