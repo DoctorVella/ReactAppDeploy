@@ -7,6 +7,11 @@
     padding-top: 50px;
 }
 
+.Field{
+    min-width: 80%;
+    margin-bottom: 10px;
+}
+
 .Button{
     border-radius: 5px;
     margin: 5px;
@@ -19,14 +24,30 @@
     color:green;
 }
 
+.bgMongodbColor{
+    background-color: green;
+}
+
 .nodeColor{
     color:rgb(125, 208, 0);
+}
+
+.bgNodeColor{
+    background-color: rgb(125, 208, 0);
 }
 
 .expressColor{
     color:black;
 }
 
+.bgExpressColor{
+    background-color: black;
+}
+
 .reactColor{
     color:rgb(11, 201, 201);
+}
+
+.bgReactColor{
+    background-color: rgb(11, 201, 201);
 }

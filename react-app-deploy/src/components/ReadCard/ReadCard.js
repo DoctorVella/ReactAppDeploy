@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import Card from '../Card/Card';
 import Swal from "sweetalert2";
 import { AppContext } from '../../contexts/AppContext';
@@ -8,7 +8,6 @@ import './ReadCard.css';
 
 const ReadCard = ({defaultId}) => {
   const { axiosInstance,setLoading } = useContext(AppContext);
-  const [getResponse, setGetResponse] = useState();
 
   let initValues = {
     id: defaultId
@@ -26,7 +25,6 @@ const ReadCard = ({defaultId}) => {
         }
       })
       setLoading(false)
-      setGetResponse(res?.data)
       Swal.fire({
         icon: 'success',
         title: 'Item searched',
@@ -34,6 +32,7 @@ const ReadCard = ({defaultId}) => {
       })
     } catch (e) {
       console.error(e);
+      setLoading(false);
       Swal.fire({
         icon: 'error',
         title: 'Client call error'
@@ -55,7 +54,7 @@ const ReadCard = ({defaultId}) => {
       }}
     >
       <Form>
-        <div className=''>
+        <div>
           <span>ID: </span>
           <Field
             type="text"
@@ -65,7 +64,7 @@ const ReadCard = ({defaultId}) => {
           />
           <ErrorMessage render={msg => <div style={{ color: "red" }}>{msg}</div>} name="id" />
         </div>
-        <button className='Button' style={{ backgroundColor: 'black' }} type="submit">Let's try!</button>
+        <button className='Button bgExpressColor' type="submit">Let's try!</button>
       </Form>
     </Formik>
   </Card>

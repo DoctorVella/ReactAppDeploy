@@ -3,6 +3,7 @@ import Card from '../Card/Card';
 import './HomePage.css';
 import ReadCard from '../ReadCard/ReadCard';
 import CreateCard from '../CreateCard/CreateCard';
+import DeleteCard from '../DeleteCard/DeleteCard';
 
 const HomePage = () => {
   const [defaultId, setDefaultId] = useState();
@@ -21,7 +22,7 @@ const HomePage = () => {
         <CreateCard setDefaultId={setDefaultId} />
       </div>
       <div className='col-md-6'>
-        <ReadCard defaultId={defaultId}/>
+        <ReadCard defaultId={defaultId} />
       </div>
     </div>
     <div className='row m-5'>
@@ -31,9 +32,7 @@ const HomePage = () => {
         </Card>
       </div>
       <div className='col-md-6'>
-        <Card title="DELETE">
-          <div>CONTENT</div>
-        </Card>
+        <DeleteCard defaultId={defaultId} setDefaultId={setDefaultId} />
       </div>
     </div>
   </div>
