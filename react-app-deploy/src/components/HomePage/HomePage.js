@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import Card from '../Card/Card';
 import './HomePage.css';
 import ReadCard from '../ReadCard/ReadCard';
 import CreateCard from '../CreateCard/CreateCard';
 import DeleteCard from '../DeleteCard/DeleteCard';
+import UpdateCard from '../UpdateCard/UpdateCard';
 
 const HomePage = () => {
   const [defaultId, setDefaultId] = useState();
+  const [docValues, setDocValues] = useState();
 
   return <div className='container-fluid HomePage'>
     <h1 className='h1'>
@@ -19,7 +20,7 @@ const HomePage = () => {
     </h1>
     <div className='row m-5'>
       <div className='col-md-6'>
-        <CreateCard setDefaultId={setDefaultId} />
+        <CreateCard setDefaultId={setDefaultId} setDocValues={setDocValues} />
       </div>
       <div className='col-md-6'>
         <ReadCard defaultId={defaultId} />
@@ -27,12 +28,10 @@ const HomePage = () => {
     </div>
     <div className='row m-5'>
       <div className='col-md-6'>
-        <Card title="UPDATE">
-          <div>CONTENT</div>
-        </Card>
+        <UpdateCard defaultId={defaultId} docValues={docValues} setDocValues={setDocValues} />
       </div>
       <div className='col-md-6'>
-        <DeleteCard defaultId={defaultId} setDefaultId={setDefaultId} />
+        <DeleteCard defaultId={defaultId} setDefaultId={setDefaultId} setDocValues={setDocValues} />
       </div>
     </div>
   </div>

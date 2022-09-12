@@ -6,7 +6,7 @@ import './CreateCard.css';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from "yup";
 
-const CreateCard = ({ setDefaultId }) => {
+const CreateCard = ({ setDefaultId, setDocValues }) => {
     const { axiosInstance, setLoading } = useContext(AppContext);
 
     let initValues = {
@@ -28,6 +28,7 @@ const CreateCard = ({ setDefaultId }) => {
             })
             setLoading(false)
             setDefaultId(res?.data?.id)
+            setDocValues(values)
             Swal.fire({
                 icon: 'success',
                 title: 'Item Inserted',

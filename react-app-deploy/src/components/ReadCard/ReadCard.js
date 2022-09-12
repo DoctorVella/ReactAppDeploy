@@ -10,7 +10,7 @@ const ReadCard = ({defaultId}) => {
   const { axiosInstance,setLoading } = useContext(AppContext);
 
   let initValues = {
-    id: defaultId
+    id: defaultId ? defaultId : ""
   }
 
   const handleSubmit = async (values) => {

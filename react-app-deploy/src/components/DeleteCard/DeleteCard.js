@@ -6,11 +6,11 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import './DeleteCard.css';
 
-const DeleteCard = ({defaultId,setDefaultId}) => {
+const DeleteCard = ({defaultId,setDefaultId,setDocValues}) => {
     const { axiosInstance, setLoading } = useContext(AppContext);
 
     let initValues = {
-        id: defaultId
+        id: defaultId ? defaultId : ""
     }
 
     const handleSubmit = async (values) => {
@@ -26,6 +26,7 @@ const DeleteCard = ({defaultId,setDefaultId}) => {
             })
             setLoading(false)
             setDefaultId("")
+            setDocValues({})
             Swal.fire({
                 icon: 'success',
                 title: 'Item deleted',
