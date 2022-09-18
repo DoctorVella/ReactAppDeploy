@@ -1,16 +1,15 @@
 import React, { useContext } from 'react';
-import Card from '../Card/Card';
 import Swal from "sweetalert2";
 import { AppContext } from '../../contexts/AppContext';
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import './ReadCard.css';
 
-const ReadCard = ({defaultId}) => {
-  const { axiosInstance,setLoading } = useContext(AppContext);
+const ReadCard = ({ defObj, setDefObj }) => {
+  const { axiosInstance, setLoading } = useContext(AppContext);
 
   let initValues = {
-    id: defaultId ? defaultId : ""
+    id: defObj?.id ? defObj?.id : ""
   }
 
   const handleSubmit = async (values) => {
@@ -24,7 +23,13 @@ const ReadCard = ({defaultId}) => {
           collection: 'accounts'
         }
       })
-      setLoading(false)
+      setLoading(false);
+      let result = {
+        id: res?.data[0]?._id,
+        name: res?.data[0]?.name,
+        description: res?.data[0]?.description
+      };
+      setDefObj(result);
       Swal.fire({
         icon: 'success',
         title: 'Item searched',
@@ -40,34 +45,32 @@ const ReadCard = ({defaultId}) => {
     }
   }
 
-  return <Card title="READ" titleCss="expressColor">
-    <Formik
-      enableReinitialize
-      initialValues={initValues}
-      validationSchema={Yup.object({
-        id: Yup.string().required("ID required!")
-      })}
-      onSubmit={(values, { setSubmitting, resetForm }) => {
-        handleSubmit(values);
-        resetForm(initValues)
-        setSubmitting(false);
-      }}
-    >
-      <Form>
-        <div>
-          <span>ID: </span>
-          <Field
-            type="text"
-            name="id"
-            className="Field"
-            placeholder="ID"
-          />
-          <ErrorMessage render={msg => <div style={{ color: "red" }}>{msg}</div>} name="id" />
-        </div>
-        <button className='Button bgExpressColor' type="submit">Let's try!</button>
-      </Form>
-    </Formik>
-  </Card>
+  return <Formik
+    enableReinitialize
+    initialValues={initValues}
+    validationSchema={Yup.object({
+      id: Yup.string().required("ID required!")
+    })}
+    onSubmit={(values, { setSubmitting, resetForm }) => {
+      handleSubmit(values);
+      resetForm(initValues)
+      setSubmitting(false);
+    }}
+  >
+    <Form>
+      <div>
+        <label>ID</label><br/>
+        <Field
+          type="text"
+          name="id"
+          className="Field"
+          placeholder="ID"
+        />
+        <ErrorMessage render={msg => <div style={{ color: "red" }}>{msg}</div>} name="id" />
+      </div>
+      <button className='Button' type="submit">Let's try!</button>
+    </Form>
+  </Formik>
 };
 
 ReadCard.propTypes = {};

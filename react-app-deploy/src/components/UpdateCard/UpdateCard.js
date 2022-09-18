@@ -1,23 +1,22 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../../contexts/AppContext';
 import Swal from "sweetalert2";
-import Card from '../Card/Card';
 import './UpdateCard.css';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from "yup";
 
-const UpdateCard = ({defaultId,docValues,setDocValues}) => {
+const UpdateCard = ({ defObj, setDefObj }) => {
     const { axiosInstance, setLoading } = useContext(AppContext);
 
     let initValues = {
-        id: defaultId ? defaultId : "",
-        name: docValues?.name ? docValues.name : "",
-        description: docValues?.description ? docValues.description : ""
+        id: defObj?.id ? defObj?.id : "",
+        name: defObj?.name ? defObj?.name : "",
+        description: defObj?.description ? defObj?.description : ""
     }
 
     const handleSubmit = async (values) => {
         try {
-            setLoading(true)
+            setLoading(true);
             const res = await axiosInstance({
                 method: 'PUT',
                 url: '/update',
@@ -26,14 +25,14 @@ const UpdateCard = ({defaultId,docValues,setDocValues}) => {
                     collection: 'accounts'
                 },
                 data: values
-            })
-            setLoading(false)
-            setDocValues(values)
+            });
+            setLoading(false);
+            setDefObj(values);
             Swal.fire({
                 icon: 'success',
                 title: 'Item Updated',
                 text: "Update result: " + res?.data
-            })
+            });
         } catch (e) {
             console.error(e);
             setLoading(false);
@@ -44,8 +43,7 @@ const UpdateCard = ({defaultId,docValues,setDocValues}) => {
         }
     }
 
-    return <Card title="UPDATE" titleCss="reactColor">
-    <Formik
+    return <Formik
         enableReinitialize
         initialValues={initValues}
         validationSchema={Yup.object({
@@ -53,15 +51,15 @@ const UpdateCard = ({defaultId,docValues,setDocValues}) => {
             name: Yup.string().required("Name required!"),
             description: Yup.string().required("Description required!")
         })}
-          onSubmit={(values, { setSubmitting, resetForm }) => {
+        onSubmit={(values, { setSubmitting, resetForm }) => {
             handleSubmit(values);
             resetForm(initValues)
             setSubmitting(false);
-          }}
+        }}
     >
         <Form>
             <div>
-                <span>ID: </span>
+                <label>ID</label><br/>
                 <Field
                     type="text"
                     name="id"
@@ -71,7 +69,7 @@ const UpdateCard = ({defaultId,docValues,setDocValues}) => {
                 <ErrorMessage render={msg => <div style={{ color: "red" }}>{msg}</div>} name="id" />
             </div>
             <div>
-                <span>NAME: </span>
+                <label>Name</label>
                 <Field
                     type="text"
                     name="name"
@@ -81,7 +79,7 @@ const UpdateCard = ({defaultId,docValues,setDocValues}) => {
                 <ErrorMessage render={msg => <div style={{ color: "red" }}>{msg}</div>} name="name" />
             </div>
             <div>
-                <span>DESC.: </span>
+                <label>Description</label>
                 <Field
                     type="text"
                     name="description"
@@ -93,7 +91,6 @@ const UpdateCard = ({defaultId,docValues,setDocValues}) => {
             <button className='Button bgReactColor' type="submit">Let's try!</button>
         </Form>
     </Formik>
-</Card>
 
 }
 

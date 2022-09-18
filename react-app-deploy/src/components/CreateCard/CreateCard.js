@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../../contexts/AppContext';
 import Swal from "sweetalert2";
-import Card from '../Card/Card';
 import './CreateCard.css';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from "yup";
 
-const CreateCard = ({ setDefaultId, setDocValues }) => {
+const CreateCard = ({ setDefObj }) => {
     const { axiosInstance, setLoading } = useContext(AppContext);
 
     let initValues = {
@@ -16,7 +15,7 @@ const CreateCard = ({ setDefaultId, setDocValues }) => {
 
     const handleSubmit = async (values) => {
         try {
-            setLoading(true)
+            setLoading(true);
             const res = await axiosInstance({
                 method: 'POST',
                 url: '/insert',
@@ -25,10 +24,10 @@ const CreateCard = ({ setDefaultId, setDocValues }) => {
                     collection: 'accounts'
                 },
                 data: values
-            })
-            setLoading(false)
-            setDefaultId(res?.data?.id)
-            setDocValues(values)
+            });
+            setLoading(false);
+            values.id = res?.data?.id;
+            setDefObj(values);
             Swal.fire({
                 icon: 'success',
                 title: 'Item Inserted',
@@ -44,45 +43,43 @@ const CreateCard = ({ setDefaultId, setDocValues }) => {
         }
     }
 
-    return <Card title="CREATE" titleCss="mongodbColor">
-        <Formik
-            enableReinitialize
-            initialValues={initValues}
-            validationSchema={Yup.object({
-                name: Yup.string().required("Name required!"),
-                description: Yup.string().required("Description required!")
-            })}
-              onSubmit={(values, { setSubmitting, resetForm }) => {
-                handleSubmit(values);
-                resetForm(initValues)
-                setSubmitting(false);
-              }}
-        >
-            <Form>
-                <div>
-                    <span>NAME: </span>
-                    <Field
-                        type="text"
-                        name="name"
-                        className="Field"
-                        placeholder="Name"
-                    />
-                    <ErrorMessage render={msg => <div style={{ color: "red" }}>{msg}</div>} name="name" />
-                </div>
-                <div>
-                    <span>DESC.: </span>
-                    <Field
-                        type="text"
-                        name="description"
-                        className="Field"
-                        placeholder="Description"
-                    />
-                    <ErrorMessage render={msg => <div style={{ color: "red" }}>{msg}</div>} name="description" />
-                </div>
-                <button className='Button bgMongodbColor' type="submit">Let's try!</button>
-            </Form>
-        </Formik>
-    </Card>
+    return <Formik
+        enableReinitialize
+        initialValues={initValues}
+        validationSchema={Yup.object({
+            name: Yup.string().required("Name required!"),
+            description: Yup.string().required("Description required!")
+        })}
+        onSubmit={(values, { setSubmitting, resetForm }) => {
+            handleSubmit(values);
+            resetForm(initValues)
+            setSubmitting(false);
+        }}
+    >
+        <Form>
+            <div>
+                <label>Name</label>
+                <Field
+                    type="text"
+                    name="name"
+                    className="Field"
+                    placeholder="Name"
+                />
+                <ErrorMessage render={msg => <div style={{ color: "red" }}>{msg}</div>} name="name" />
+            </div>
+            <div>
+                <label>Description</label>
+                <Field
+                    type="text"
+                    name="description"
+                    className="Field"
+                    placeholder="Description"
+                />
+                <ErrorMessage render={msg => <div style={{ color: "red" }}>{msg}</div>} name="description" />
+            </div>
+            <button className='Button' type="submit">Let's try!</button>
+        </Form>
+    </Formik>
 }
 
 CreateCard.propTypes = {};

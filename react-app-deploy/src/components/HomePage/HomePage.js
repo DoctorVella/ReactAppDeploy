@@ -6,8 +6,7 @@ import DeleteCard from '../DeleteCard/DeleteCard';
 import UpdateCard from '../UpdateCard/UpdateCard';
 
 const HomePage = () => {
-  const [defaultId, setDefaultId] = useState();
-  const [docValues, setDocValues] = useState();
+  const [defObj, setDefObj] = useState({})
 
   return <div className='container-fluid HomePage'>
     <h1 className='h1'>
@@ -18,20 +17,42 @@ const HomePage = () => {
       <span className='nodeColor'>N.</span>
       <span> proof of concept</span>
     </h1>
-    <div className='row m-5'>
-      <div className='col-md-6'>
-        <CreateCard setDefaultId={setDefaultId} setDocValues={setDocValues} />
+    <div className='row'>
+      <div className='col-md-3'>
+        <div class="card text-white bgMongodbColor m-5">
+          <div class="card-header">CREATE</div>
+          <div class="card-body">
+            <h5 class="card-title">Create a new record</h5>
+            <CreateCard setDefObj={setDefObj} />
+          </div>
+        </div>
       </div>
-      <div className='col-md-6'>
-        <ReadCard defaultId={defaultId} />
+      <div className='col-md-3'>
+        <div class="card text-white bgExpressColor m-5">
+          <div class="card-header">READ</div>
+          <div class="card-body">
+            <h5 class="card-title">Read a saved record</h5>
+            <ReadCard defObj={defObj} setDefObj={setDefObj} />
+          </div>
+        </div>
       </div>
-    </div>
-    <div className='row m-5'>
-      <div className='col-md-6'>
-        <UpdateCard defaultId={defaultId} docValues={docValues} setDocValues={setDocValues} />
+      <div className='col-md-3'>
+        <div class="card text-white bgReactColor m-5">
+          <div class="card-header">UPDATE</div>
+          <div class="card-body">
+            <h5 class="card-title">Update a saved record</h5>
+            <UpdateCard defObj={defObj} setDefObj={setDefObj} />
+          </div>
+        </div>
       </div>
-      <div className='col-md-6'>
-        <DeleteCard defaultId={defaultId} setDefaultId={setDefaultId} setDocValues={setDocValues} />
+      <div className='col-md-3'>
+        <div class="card text-white bgNodeColor m-5">
+          <div class="card-header">DELETE</div>
+          <div class="card-body">
+            <h5 class="card-title">Delete a saved record</h5>
+            <DeleteCard defObj={defObj} setDefObj={setDefObj} />
+          </div>
+        </div>
       </div>
     </div>
   </div>
