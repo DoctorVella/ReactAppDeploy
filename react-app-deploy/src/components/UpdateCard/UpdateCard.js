@@ -69,7 +69,7 @@ const UpdateCard = ({ defObj, setDefObj }) => {
                 <ErrorMessage render={msg => <div style={{ color: "red" }}>{msg}</div>} name="id" />
             </div>
             <div>
-                <label>Name</label>
+                <label>Name</label><br/>
                 <Field
                     type="text"
                     name="name"
@@ -79,7 +79,7 @@ const UpdateCard = ({ defObj, setDefObj }) => {
                 <ErrorMessage render={msg => <div style={{ color: "red" }}>{msg}</div>} name="name" />
             </div>
             <div>
-                <label>Description</label>
+                <label>Description</label><br/>
                 <Field
                     type="text"
                     name="description"
